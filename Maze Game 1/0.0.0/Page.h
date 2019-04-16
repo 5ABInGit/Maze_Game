@@ -4,11 +4,6 @@
 #ifndef PAGE_H
 #define PAGE_H
 
-#include <vector>
-#include <cstddef>
-
-using std::vector;
-
 typedef struct
 {
 	int (*page_func)(void);

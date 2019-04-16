@@ -4,16 +4,6 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-#include <ctime>
-#include <string>
-#include <sstream>
-#include <cstdlib>
-#include <windows.h>
-
-#include "Basic_Hash.h"
-
-using namespace std;
-
 void reset_random()
 {
 	ostringstream ostr;

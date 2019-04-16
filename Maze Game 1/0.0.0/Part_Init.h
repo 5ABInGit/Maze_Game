@@ -4,15 +4,6 @@
 #ifndef PART_INIT_H
 #define PART_INIT_H 1
 
-#include <cstdlib>
-#include <iostream>
-
-#include "Random_Maze.h"
-#include "Hidden_Maze.h"
-#include "Mirror_Maze.h"
-#include "Player.h"
-#include "Functions.h"
-
 const char cards[5][11] = {
 	"  ¡ö¡ö¡ö",
 	"¡ö¡ö¡ö¡ö¡ö",

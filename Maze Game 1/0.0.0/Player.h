@@ -4,14 +4,6 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <iostream>
-#include <sstream>
-#include <cstdlib>
-#include <string>
-#include <cstdio>
-#include <cstring>
-#include <conio.h>
-
 enum User_Type {Common_user = 0, Administrator = 1};
 enum Card_State {Not_Passed = 0, Passed = 1, Jumped = 2};
 enum Random_Type {not_open, simple, easy, normal, hard, difficult, evolution};

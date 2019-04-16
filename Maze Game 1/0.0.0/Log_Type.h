@@ -4,22 +4,18 @@
 #ifndef LOG_TYPE_H
 #define LOG_TYPE_H 1
 
-#include <sstream>
-#include <string>
-#include <ctime>
-
 const char * format_of_time = "%Y/%m/%d %H:%M:%S";
 
 const std::string make_log(std::string orig)
 {
 	char mm[101] = {};
 	
-	std::time_t now;
-	std::time(&now);
-	std::strftime(mm, 100, format_of_time, std::localtime(&now));
+	time_t now;
+	time(&now);
+	strftime(mm, 100, format_of_time, localtime(&now));
 	
-	std::ostringstream outstr;
-	outstr << "[" << mm << "] " << orig << std::endl;
+	ostringstream outstr;
+	outstr << "[" << mm << "] " << orig << endl;
 	return outstr.str();
 }
 

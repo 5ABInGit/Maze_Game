@@ -2,8 +2,6 @@
 #ifndef MAZE_GAME_VARIABLES_H
 #define MAZE_GAME_VARIABLES_H
 
-#include "Maze_Game_Macros.h"
-
 struct ver_type
 {
 	int cal_one, cal_two, cal_thr;

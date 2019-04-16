@@ -17,6 +17,8 @@
 #include <vector>
 #include <ctime>
 
+using namespace std;
+
 #include "Maze_Game_Macros.h"
 #include "Maze_Game_Variables.h"
 

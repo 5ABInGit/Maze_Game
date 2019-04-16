@@ -4,17 +4,6 @@
 #ifndef PAGE_GRAPH_INIT_H
 #define PAGE_GRAPH_INIT_H 1
 
-#include <iostream>
-#include <cstdlib>
-#include <string>
-
-#include "Make_Graph.h"
-#include "Login.h"
-#include "Player.h"
-#include "Page.h"
-#include "Functions.h"
-#include "Part_Init.h"
-
 void is_choose(const int will_be, const int now)
 {
 	if (now == will_be)

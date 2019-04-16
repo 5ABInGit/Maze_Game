@@ -4,14 +4,6 @@
 #ifndef MAZE_WRITE_TO_BINARY_H
 #define MAZE_WRITE_TO_BINARY_H 1
 
-#include <fstream>
-#include <sstream>
-#include <iomanip>
-#include <string>
-
-#include "Template_Maze.h"
-#include "Maze_Game_Macros.h"
-
 // 自定义.bimaze文件将会在1.x版本加入 
 // 现在可以进行迷宫写入，但是得修改源代码，不建议。 
 

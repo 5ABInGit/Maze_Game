@@ -4,18 +4,6 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
-#include <iostream>
-#include <fstream>
-#include <cstring>
-#include <cstdlib>
-#include <cstdio>
-#include <cctype>
-#include <string>
-#include <conio.h>
-
-#include "Log_Type.h"
-#include "Basic_Hash.h"
-
 #define WRONG_PASSWORD 1
 #define WRONG_USERNAME 2
 #define NO_PASSWORD    3

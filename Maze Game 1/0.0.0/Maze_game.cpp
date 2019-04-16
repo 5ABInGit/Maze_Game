@@ -2,11 +2,7 @@
 // 这里是Maze_Game的主程序 
 // 具体编译事项请看同目录下的Info.txt 
 
-#include <cstddef>
-
-#include "Page.h"
-#include "Page_Graph_Init.h"
-
+#include "Maze_Game_Public_Library.h"
 using namespace std;
 
 int main()

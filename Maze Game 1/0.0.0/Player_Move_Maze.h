@@ -15,15 +15,19 @@ class maze;
 class user_controlor
 {
 	private:
-		int user_x, user_y;
+		maze *m;
 	
 	public:
-		user_controlor() : user_x(0), user_y(0) { }
-		user_controlor(const maze &m);
+		user_controlor() : m(NULL) { }
+		user_controlor(maze *_m)
+			{ m = _m; }
 		
 		~user_controlor() { }
 		
-		void reshow(const maze &m, toward pos);
+		void reconnect(maze *_m)
+			{ m = _m; }
+		
+		void reshow(toward pos);
 		// 为了不使迷宫加载导致屏幕闪烁 
 };
 

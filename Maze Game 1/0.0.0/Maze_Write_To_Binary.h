@@ -121,7 +121,7 @@ void read_maze(maze & m, const int chapter_count, const int number_count)
 {
 	std::ifstream fin;
 	std::string ss, bin;
-	int tmps1, tmp2;
+	int tmp1, tmp2;
 	std::ostringstream outstr;
 	
 	outstr << chapter_count << "_" << number_count << ".bimaze";

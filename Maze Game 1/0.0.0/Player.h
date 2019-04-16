@@ -12,7 +12,7 @@
 #include <cstring>
 #include <conio.h>
 
-enum User_Type {Common_user = 0, Administator = 1};
+enum User_Type {Common_user = 0, Administrator = 1};
 enum Card_State {Not_Passed = 0, Passed = 1, Jumped = 2};
 enum Random_Type {not_open, simple, easy, normal, hard, difficult, evolution};
 
@@ -40,66 +40,36 @@ class player
 {
 	private:
 		
-		string       username;
-		User_Type    user_type;
-		Exp_Type     user_xp;
-		unsigned int money;
-		Card_State   cards[100];
-		Random_Type  rands;
-		int          mob_diff;
-		bool         is_open_surprise[5];
+		struct basic_player
+		{
+			char         username[21];
+			char         password[21];
+			User_Type    user_type;
+			Exp_Type     user_xp;
+			unsigned int money;
+			Card_State   cards[100];
+			Random_Type  rands;
+			int          mob_diff;
+			bool         decision[100];
+		};
+		
+		basic_player bp;
 	
 	public:
 		
-		player(const string & finfo, const string & name = default_name)
+		void reset_user(const string & finfo)
 		{
-			reset_user(finfo, name);
+			std::istringstream istr(finfo);
+			istr.read((char *)&bp, sizeof(bp));
+			return;
 		}
+		
+		player(const string & finfo)
+			{ reset_user(finfo); }
 		
 		player() { }
 		
 		~player() { }
-		
-		void reset_user(const string & finfo, const string & name = default_name)
-		{
-			memset(cards, 0, sizeof(cards));
-			username = name;
-			
-			char s;
-			int tmp1;
-			istringstream instr(finfo);
-			
-			instr >> tmp1;
-			if (tmp1 == 0)
-				user_type = Common_user;
-			else
-				user_type = Administator;
-			instr.get();
-			
-			if (user_type = Common_user)
-			{
-				instr >> tmp1;
-				user_xp.tier = tmp1;
-				instr.get();
-				
-				instr >> tmp1;
-				user_xp.less = tmp1;
-				instr.get();
-				
-				user_xp.calculate_total();
-			}
-			
-			instr >> money;
-			instr.get();
-			
-			instr >> tmp1;
-			for (int i = 0; i < tmp1; i++)
-				cards[i] = Passed;
-			instr.get();
-			while (instr >> tmp1)
-				cards[tmp1] = Jumped;
-			instr.get();
-		}
 		
 		static void find_file (char * info, const string & uname)
 		{
@@ -117,20 +87,20 @@ class player
 		}
 		
 		const string user_name () const
-		{ return username; }
+		{ return bp.username; }
 		
 		const Exp_Type xp () const
-		{ return user_xp; }
+		{ return bp.user_xp; }
 		
-		const int user_money () const
-		{ return money; }
+		const unsigned int user_money () const
+		{ return bp.money; }
 		
 		const bool is_passed (int card_index) const
 		{
 			if (card_index < 0 || card_index >= 100)
 				return false;
 			
-			if (cards[card_index] == Passed)
+			if (bp.cards[card_index] == Passed)
 				return true;
 			return false;
 		}
@@ -140,33 +110,33 @@ class player
 			if (card_index < 0 || card_index >= 100)
 				return false;
 			
-			if (cards[card_index] == Jumped)
+			if (bp.cards[card_index] == Jumped)
 				return true;
 			return false;
 		}
 		
 		const Random_Type rand_type() const
-		{ return rands; }
+		{ return bp.rands; }
 		
 		const int mob_difficult () const
-		{ return mob_diff; }
+		{ return bp.mob_diff; }
 		
 		friend std::ostream & operator<< (std::ostream & os, const player & pl)
 		{
 			system("CLS");
 			
-			os << "[System] 以下为" << pl.username << "的用户信息" << endl;
+			os << "[System] 以下为" << pl.bp.username << "的用户信息" << endl;
 			os << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 			
 			os << "[System] 用户类型：";
 			
-			if (pl.user_type == Administator)
+			if (pl.bp.user_type == Administrator)
 				os << "管理员" << endl;
 			else
 				os << "普通用户" << endl;
 			
-			os << "[System] 玩家经验：" << pl.user_xp.tier << "级" << endl;
-			os << "[System] 金钱：    " << pl.money << "$" << endl << endl;
+			os << "[System] 玩家经验：" << pl.bp.user_xp.tier << "级" << endl;
+			os << "[System] 金钱：    " << pl.bp.money << "$" << endl << endl;
 			os << "[System] 按任意键返回上一页..." << endl;
 			
 			getch();

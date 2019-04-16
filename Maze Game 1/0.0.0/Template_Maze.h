@@ -86,9 +86,8 @@ extern void write_maze(const maze &m, int chapter_count, int number_count);
 class maze
 {
 	public:
-		friend void user_controlor::reshow(const maze &m, toward pos);
+		friend void user_controlor::reshow(toward pos);
 		friend void write_maze(const maze &m, int chapter_count, int number_count);
-		friend user_controlor::user_controlor(const maze &m);
 	
 	// 声明友元关系 
 	
@@ -191,15 +190,9 @@ class maze
 		}
 };
 
-// user_controlor的剩余两个方法的定义 
+// user_controlor的剩余方法的定义 
 
-user_controlor::user_controlor(const maze &m)
-{
-	user_x = m.m_bm.user_x; // 因为声明了友元所以可以直接访问 
-	user_y = m.m_bm.user_y;
-}
-
-void user_controlor::reshow(const maze &m, toward pos)
+void user_controlor::reshow(toward pos)
 {
 	
 }

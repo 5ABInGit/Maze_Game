@@ -63,7 +63,7 @@ int _PG_0()
 	/* Get user's information */
 	
 	player::find_file(id, name);
-	Player_data.reset_user(string(id), name);
+	Player_data.reset_user(string(id));
 	
 	time_stop (1);
 	cout << "[System] 信息提取成功，正在进行初始化..." << endl;

@@ -9,7 +9,6 @@ enum block_type {no_entry = 0, can_entry = 1};
 
 const int place[4][2] = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
 
-class maze;
 // 前置声明，保证user_controlor类可以识别到maze类 
 // 该类将会在0.x加入（暂时不使用） 
 class user_controlor

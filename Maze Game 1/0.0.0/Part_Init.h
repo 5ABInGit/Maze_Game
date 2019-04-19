@@ -61,9 +61,6 @@ int basic_play_chapter(int chapter)
 		maze m;
 		read_maze(m, chapter, choose_maze);
 		
-		if ()
-		play_part(m);
-		
 	}
 }
 

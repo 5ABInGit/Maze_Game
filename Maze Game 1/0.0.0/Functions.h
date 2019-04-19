@@ -6,19 +6,14 @@
 
 void reset_random()
 {
-	ostringstream ostr;
-	string str;
-	
-	ostr << std::time(NULL);
-	str = ostr.str();
-	unsigned int ans = basic_hashstr(str.c_str());
-	
-	str.clear();
-	ostr.str(str);
-	
-	ostr << ans << ans + 10 << ans + 1964826 << ans - 8239;
-	
-	srand(basic_hashstr(str.c_str()));
+	srand(time(NULL) * 32940087u + 92137u);
+}
+
+void clean_buf()
+{
+	while (kbhit())
+		getch();
+	return;
 }
 
 void time_stop(double seconds)
@@ -36,12 +31,22 @@ int ranged_rand(int begin_pos, int end_pos)
 	int smallest = RAND_MAX / range_count;
 	smallest *= range_count;
 	
-	while ((right_pos = rand()) < smallest)
-		reset_random();
+	while ((right_pos = rand()) < smallest);
 	
 	int ans = (right_pos % range_count) + begin_pos;
 	
 	return ans;
+}
+
+bool random_true(double probability)
+{
+	reset_random();
+	
+	int k = rand();
+	if ((double(k) / RAND_MAX) < probability)
+		return true;
+	else
+		return false;
 }
 
 void goto_xy (int x, int y)
@@ -78,6 +83,12 @@ void set_screen_color(int color_base, int color_look)
 	
 	system(command.c_str());
 	
+	return;
+}
+
+void cls()
+{
+	system("CLS");
 	return;
 }
 
